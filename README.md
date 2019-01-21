@@ -1,8 +1,11 @@
+---
 # PAT
   
 2019.1.21 lexi_lii   
     
     记录PAT刷题过程中的心得体会，以及涉及到的陌生知识点。
+
+---
 
 ## 1001 A+B Format
 
@@ -46,13 +49,14 @@
   
    * `to_string(int)` 可以将 int 转化为 string
 
+---
 ## 1002 A+B for Polynomials
 
-### `思路1(别人的）`  
+### `思路1(参考）`  
 
    建立 `result` 数组，按下标对应指数将两组数累加进去，合为 `0` 或 本身为 `0`  的项不输出，且统计 `k` 的时候要删掉。 
 
-### `思路2(自己的）`  
+### `思路2(mine）`  
 
   * `易错点`  
   
@@ -93,7 +97,8 @@
         //do something;
      }
      ```
-      
+   
+---
 ## 1003 Emergency 
      
 ### `思路`
@@ -119,7 +124,7 @@
           若 `dist[nearst]+ map[nearst][j] < dist[j]` , 则更新节点 `j` 到 `起点` 的最近距离
       
       
-      
+---      
 ## 1005 Spell It Right    
       
 ### `思路`
@@ -130,11 +135,26 @@
 ### `小技巧`
 
    * ` '5'-'0' `就是 5（int）
+   
+---
+## 1006 Sign In and Sign Out
+
+### `思路1(mine)`
       
+  * 构建结构体
+      ```cpp
+      struct Register
+      {
+        string ID;
+        int signIn[3];
+        int signOut[3];
+      }
       
-      
-      
-      
+      vector<Register> list;
+      ```
+  * 读入数据，计算 `时、分、秒` ,存入 signIn 和 signOut
+  * 比较时间（先h、再m、最后s）  
+  * 判断 signIn 最小和 signOut 最大的ID分别输出
       
       
       

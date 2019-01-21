@@ -9,21 +9,22 @@
 ### `思路1`  
  
    起先决定用1000对求和结果取余，再将余数转化为字符串，用字符串相加的方式添加 `,` 分隔符进去，最终输出字符串，核心代码如下：  
-    ```cpp
-    cin>>a>>b;
-    sum = a + b;
-    tempSum = abs(sum);
-    do {
-        quotient = tempSum/1000; //商
-        remainder = tempSum%1000; //余数
-        if(quotient != 0)
-          result = "," + to_string(remainder) + result;
-        else
-          result = to_string(remainder) + result;
-        tempSum = quotient;
-        } while(tempSum != 0);
-    if (sum<0)
-        result = "-" + result;
+      
+    ```cpp  
+    cin>>a>>b;  
+    sum = a + b;  
+    tempSum = abs(sum);  
+    do {  
+        quotient = tempSum/1000; //商  
+        remainder = tempSum%1000; //余数  
+        if(quotient != 0)  
+          result = "," + to_string(remainder) + result;  
+        else  
+          result = to_string(remainder) + result;  
+        tempSum = quotient;  
+        } while(tempSum != 0);  
+    if (sum<0)  
+        result = "-" + result;  
     ```
   * `漏洞`  
      
@@ -45,7 +46,7 @@
 
 ### `思路1(别人的）`  
 
-    建立 `result` 数组，按下标对应指数将两组数累加进去，合为 `0` 或 本身为 `0`  的项不输出，且统计 `k` 的时候要删掉。 
+   建立 `result` 数组，按下标对应指数将两组数累加进去，合为 `0` 或 本身为 `0`  的项不输出，且统计 `k` 的时候要删掉。 
 
 ### `思路2(自己的）`  
 
@@ -68,6 +69,7 @@
   * `建立循环`  
   
     只要两个vector都没到尽头，循环就一直继续
+    
   * `循环内分类讨论`
   
     * vector1 到头，vector2 直接循环叠加到 result 后

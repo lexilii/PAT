@@ -49,8 +49,64 @@
 
 * `思路1(自己的）`  
 
-  * `易错点`
-    
-  1. 小数输出精确到小数点后 1 位
-  2. 系数和为 0 后，该项不统计也不输出
+  * `易错点`  
+  
+    * 小数输出精确到小数点后 1 位  
+    * 系数和为 0 后，该项不统计也不输出
  
+  * `构建结构体`
+    ```cpp
+    struct Polynomials
+    {
+      int exponents;
+      double coefficients;
+    
+      //构造函数
+      Polynomials( int e=0, double c=0):exponents(e),coefficients(c) {}  
+     }
+     ```
+  * `建立循环`  
+  
+    只要两个vector都没到尽头，循环就一直继续
+  * `循环内分类讨论`
+  
+    * vector1 到头，vector2 直接循环叠加到 result 后
+    * vector2 到头，vector1 直接循环叠加到 result 后
+    * vector1 vector2 都没结束
+      1. vector1 的系数 > vector2 的系数
+      2. vector1 的系数 < vector2 的系数
+      3. vector1 的系数 = vector2 的系数:系数相加，`涉及系数和为 0  的特殊情况`
+      
+   * `double 类型对象不可直接和 0 作比较，来判断其是否为0`
+   
+     ```cpp
+     if(abs(a) > 1e-08)
+     {
+        //do something;
+     }
+     ```
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

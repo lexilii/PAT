@@ -262,7 +262,7 @@
 
 ### `思路2(更优！！)`
       
-  只需要所有人中 Sign_In_Time 最小和 Sign_Out_Time 最大的，所以初始化所有人中 unlock_time = "23:59:59" , lock_time = "00:00:00"
+   只需要所有人中 Sign_In_Time 最小和 Sign_Out_Time 最大的，所以初始化所有人中 unlock_time = "23:59:59" , lock_time = "00:00:00"
   * 每输入一个 ID_number Sign_in_time Sign_out_time  
     ```cpp
     if (Sign_in_time <= unlock_time)
@@ -481,15 +481,96 @@
     }
    ```
 
+   ---
+## 1013 Battle Over Cities
+
+### `思路`      
+        
+  * `本质`：一个图中，去掉某一个点，那么这张图至少需要添加多少条边来保持连通性
+  
+      * 一个 N 顶点的连通图，至少需要 N-1 条边
+      * `深度优先搜索（DFS）`访问整张图的顶点，计算连通分量的个数，连通分量可以视为一个点
+      * 利用`邻接矩阵v`存储整张图，用visit数组表示城市是否被遍历过
+      * 对于每个被占领的城市，将其表示为遍历过的状态true即可
+      
+  * `深度优先搜索`
+  
+    * 思想
+    
+      * 从一个顶点 v0 开始，沿着一条路一直走到底。
+      * 如果发现不能到达目标解，就返回上一个节点，然后从另一条路开始走到底
+      * 这种尽量往深处走的概念就是`深度优先`
+    
+      ```cpp
+        DFS(dep,...) //dep 代表目前DFS的深度
+        {
+            if(找到解 || 走不下去了）
+            {
+                //...
+                return;
+            }
+            
+            //枚举下一种情况，DFS(dep+1,...）
+        }
+      ```
+    * 核心代码
+
+    ```cpp
+      /**
+       * 前置条件是 visit 数组全部设置成 false
+       * @param n 当前开始搜索的节点
+       * @param d 当前到达的深度
+       * @return 是否有解
+      */
+      
+      bool DFS(Node n, int d)
+      {
+          if(isEnd(n,d))
+          {
+              return true; //一旦搜索深度到达一个结束状态，就返回true
+          }
+          
+          for(Node nextNode in n) //遍历n相邻的nextNode
+          {
+              if(!visit[nextNode]]
+              {
+                  visit[nextNode] == true; //在下一步搜索中，nextNode不能再次出现
+                  if(DFS（nextNode，d+1) //如果搜索出有解
+                  {
+                      //做些其他事情，例如记录结果深度等
+                      return true;
+                  }
+                  //重新设置成false，因为它有可能出现在下一次搜索的别的路径中
+                  visit[nextNode] = false;
+              }
+          }
+          return false; //本次搜索无解
+      }
+    ```
 
 
+### `小技巧`  
+
+ * `printf 和 scanf 效率要远高于 std::cout 和 std::cin`
+ 
+   cout和cin从实际测试的结果，速度比printf和scanf慢一个数量级以上。
+   
+   影响cout和cin的性能的有两个方面：同步性和缓冲区。  
+   
+   `同步性`可以通过ios_base::sync_with_stdio(false)禁用；  
+   操作系统会对缓冲区进行管理和优化，但十分有限，使用了endl之后，会对缓冲区执行清空操作，这个过程会先执行’\n’，再执行flush操作，非常漫长，所以尽量使用‘\n’而不是endl执行换行。
+   
+   然后，还有一个cout和cin的绑定效果，两者同时使用的话，cin与cout交替操作，会有一个flush过程，所以还是会很漫长，可以通过cin.tie(0)禁用绑定。 
+   
+   但是需要注意的是，禁用同步之后，printf和scanf就不能用了，所以绕了一圈，还是用printf和scanf吧……
 
 
+   ---
+## 1016 Phone Bills
 
-
-
-
-
+### `思路`      
+        
+一个用户要是没有任何有效的通话记录的话，就什么都不输出
 
 
 

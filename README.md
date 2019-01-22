@@ -115,15 +115,119 @@
       
    * `算法思路`
      
-       * 对所有节点状态进行初始化 `visit` `dist = INF`
-       * 对起点状态初始化
-       * 用邻接矩阵描述各点间的连通关系
-       * 搜索所有未访问节点，寻找距离起点最近的节点，更新其状态为 `visit = 1`（已访问）
-       * 在所有未访问节点中进行搜索  
-          
-          若 `dist[nearst]+ map[nearst][j] < dist[j]` , 则更新节点 `j` 到 `起点` 的最近距离
-      
-      
+       ```cpp
+        Dijkstra()
+        {
+            //初始化；
+            for( 循环n次 )
+            {
+                u = 使 dis[u] 最小的还未被访问的顶点的编号;
+                记 u 为确定值;
+                for(从 u 出发能到达的所有顶点 v )
+                {
+                    if(v 未被访问 && 以 u 为中介点使 s 到顶点 v 的最短距离更优）
+                        优化dis[v];
+                }
+            }
+        }
+        
+        
+        //邻接矩阵
+        int n, e[maxv][maxv];
+        int dis[maxv], pre[maxv]; //pre用来标注当前节点的前一个节点
+        bool vis[maxv] = {false};
+        
+        void Dijkstra(int s) //s是源点
+        {
+            fill(dis ,dis + maxv ,inf); //距离初始化为无穷远
+            dis[s] = 0;
+            for(int i=0; i<n; i++)
+                pre[i] = i;//初始状态设每个点的前驱为自身
+            for(int i=0; i<n; i++)
+            {
+                int u = -1;
+                int minn = inf;
+                for(int j=0; j<n; j++）
+                {
+                    if(visit[j] == flase && dis[j] < minn)
+                    {
+                        u = j;
+                        minn = dis[j];
+                    }
+                }
+                if(u == -1)
+                    return;
+                visit[u] = true;
+                for(int v=0; v<n; v++)
+                {
+                    if(visit[v] == false && e[u][v] != inf && dis[u] + e[u][v] < dis[v])
+                    {
+                        dis[v] = dis[u] + e[u][v];
+                        pre[v] = u; //pre 来标注当前节点的前一个节点 
+                    }
+                }
+            }
+        }
+       ```
+   * `三种考法`（第一标尺是距离，如果距离相等，新增第二标尺）
+   
+     * 新增边权：在最短路径有多条时要求路径上的花费之和最小
+     ```cpp
+      for(visit[v] == false && e[u][v] != inf)
+      {
+          if(dis[u] + e[u][v] < dis[v])
+          {
+              dis[v] = dis[u] + e[u][v];
+              c[v] = c[u] + cost[u][v];
+          }
+          else if(dis[u]+e[u][v] == dis[v] && c[u] + cost[u][v] < c[v])
+          {
+              c[v] = c[u] + cost[u][v];
+          }
+      }
+      ```
+   * 新增点权：在最短路径有多条时要求路径上的点权之和最大
+     ```cpp
+      for(int v=0; v<n; v++)
+      {
+          if(visit[v] == false && e[u][v] != inf)
+          {
+              if(dis[u] + e[u][v] < dis[v])
+              {
+                  dis[v] = dis[u] + e[u][v];
+                  w[v] = w[u] + weight[v];
+              }
+              else if(dis[u] + e[u][v] == dis[v] && w[u] + weight[v] > w[v])
+              {
+                  w[v] = w[u] + weight[v];
+              }
+          }
+      }
+     ```
+  *  直接问有多少条最短路径  
+   num[s] = 1，其余num[u]=0表示从起点s到达顶点u的最短路径的条数为num[u]。
+     ```cpp
+      for(int v=0; v<n; v++)
+      {
+          if(visit[v] == false && e[u][v] != inf)
+          {
+              if(dis[u] + e[u][v] < dis[v])
+              {
+                  dis[v] = dis[u]+e[u][v];
+                  num[u] = num[v];
+              }
+              else if(dis[i] + e[u][v] == dis[v])
+              {
+                  num[v] = num[u] + num[v];
+              }
+          }
+      }
+     ```
+ 
+### `小技巧`   
+
+   * 迪杰斯特拉算法！！
+
 ---      
 ## 1005 Spell It Right    
       
@@ -155,9 +259,253 @@
   * 读入数据，计算 `时、分、秒` ,存入 signIn 和 signOut
   * 比较时间（先h、再m、最后s）  
   * 判断 signIn 最小和 signOut 最大的ID分别输出
+
+### `思路2(更优！！)`
+      
+  只需要所有人中 Sign_In_Time 最小和 Sign_Out_Time 最大的，所以初始化所有人中 unlock_time = "23:59:59" , lock_time = "00:00:00"
+  * 每输入一个 ID_number Sign_in_time Sign_out_time  
+    ```cpp
+    if (Sign_in_time <= unlock_time)
+    {
+        unlock_time = Sign_in_time;
+        In_ID = ID_number
+    }
+    
+    if(Sign_out_time >= lock_time)
+    {
+       lock_time = Sign_out_time;
+       Out_ID = ID_number;
+    }
+    
+    string minT = "23:59:59";
+    string maxT = "00:00:00";
+    string tmp_in, tmp_out;
+    string strID;
+    ...
+    for(int i=0; i<num; i++)
+    {
+       cin>> strID >> tmp_in >> tmp_out;
+       if(tmp_in <= minT) //string 类型可以直接大小比较 “23:59:58 > 23:59:57”
+       {
+          mins= strID;
+          minT = tmp_in;
+       }
+       if(tmp_out >= maxT)
+       {
+          maxs= strID;
+          maxT = tmp_out;
+       }
+    }
+    cout<< mins << " " << maxs << endl;
+    ```
+
+### `小技巧`
+      
+   C++ 字符串比较！！！ 通过比较字符串来比较时间先后 
       
       
       
       
       
+---
+## 1007 Maximum Subsequence Sum
+
+### `思路1(mine)`      
       
+   * 穷举法改进，复杂度O(n^2)，这题数据较小可通过
+   * 用连续子序列 `[i,j]` 的和求 `[i,j+1]` 的和  
+    
+   ```cpp
+     for(int i=0; i<size; i++)
+     {
+        tempSum = 0;
+        for(int j=i; j<size; j++)
+        {
+            tempSum += data[j];
+            if(tempSum > findSum) // findSum 初始化为 -1 或 -INF，因为最大和可能为0
+            {
+                finalSum = tempSum;
+                start = i;
+                end = j;
+            }
+        }
+     }
+   ```
+   * 需要考虑的几种特殊情况：  
+   
+     * 输入 3 -1 -2 -3   输出 0 -1 -3 （全为负）  
+     * 输入 3 0 1 0 输出 1 0 1（当前后有0时，取前不取后）  
+     * 输入 1 0  输出 0 0 0
+    
+### `思路2(参考)`        
+      
+   * `联机算法`
+     
+     在任意时刻对要操作的数据只读入（扫描）一次，一旦被读入并处理，就无需再记忆。而在此处理过程中算法能对它已经读入的数据，立即给出相应子序列问题的正确答案。
+     
+   * `容易相通`
+   
+     最大子序列的首位不可能是负数——因为负数只能拉低总和，不如舍弃。
+     
+   * `推广` 
+   
+     任何 `负` 的子序列不可能是最优子序列的前缀
+     
+   * `方法` 
+   
+     假设已知以位置 `i-1` 为结尾的最大子序列和 `b[i-1]`，对于以位置 `i` 为结尾的最大连续子序列和 `b[i]`
+     
+     ```cpp
+        b[i] = max{ b[i-1] + a[i] , a[i]};
+     ```
+     然后只需要令 `b[0]=a[0], maxSum = a[0]`, 然后从一开始按上述规则遍历求和 b[i] ,并用maxSum记录下最大的b[i]即可。
+          
+     ```cpp
+        int* maxSubSum ( const vector<int> &a)
+        {
+            int thisSum = a[0], left = 0;
+            int *maxSum = new int[3];
+            maxSum[0] = a[0];
+            maxSum[1] = maxSum[2] =0;
+            for(int i=1; i<a.zie(), i++)
+            {
+                if(thisSum < 0)
+                {
+                    thisSum = a[i];
+                    left = i;
+                }
+                else //thisSum>=0
+                    thisSum += a[i];
+                
+                if(thisSum > maxSum[0])
+                {
+                    maxSum[0] = thisSum;
+                    maxSum[1] = left;
+                    maxSum[2] = i;
+                }
+            }
+            
+            return maxSum;
+        }
+     ```
+### `小技巧`      
+      
+   * 联机算法！！
+      
+---
+## 1009 Product of Polynomials
+
+### `思路1(mine)`      
+            
+   用数组存储多项式，下标对应指数 exp
+   
+   * `注意`  
+   
+      * 数组最大长度是有限制的
+      
+        * 函数中的`char`（1字节）数组最大开到 4x518028 
+        * 函数中的`int`（4字节）数组最大开到 518028
+        * static/全局中int 最大开到10^7x10^7(static和全局开的是同一块空间）
+      
+      * A和B的最大项指数均可为1000，则乘积 result 的最高项指数可达 2000，因此数组大小要开成 `double result[2001]={0};`
+      
+### `小技巧`  
+
+   * `IO 输出精度设置`
+   
+      ```cpp
+        #include <iomanip>
+        cout<<setprecision(n); //n代表保留几位
+      ```
+   * `注意`
+   
+     观察发现，若设置精度前设置了  
+      ```cpp
+      cout.setf(ios::fixed); //不足位补0
+      ```
+      保留的位数才从小数点后开始计，否则从小数点前开始计。
+   
+   
+   ---
+## 1012 The Best Rank
+
+### `思路1(mine)`      
+            
+* `分析`
+  
+  * 排名并列应该为 1，1，3，4，5 而非1，1，2，3，4 ！！
+  * 平均分四舍五入，按照 +0.5后取整（不四舍五入也可通过）
+  * 存储科目成绩时按 A C M E 存储可以简化程序逻辑（因为要求排名相同时，按照 A C M E 的优先级输出）
+  
+* `建立结构体，存储学生成绩及排名情况`
+
+   ```cpp
+    struct Student{
+        string ID;
+        int best; //最好的成绩对应的下标（rank中）
+        double grade[4] = {0}; //A C M E 顺序存储
+        int rank[4] = {1,1,1,1};
+        void calculateA(); //计算平均值A grade[0]
+        void bestGrade(); //选四门成绩中排序最好的标号赋给best
+    }
+   ```
+   
+### `思路2(mine)`     
+
+ * 对同类成绩分别进行排序
+ * 每排序一次，对应更新每个学生该成绩的排名
+ * 最后对应输入 id 的学生查询其各项排名，选择最优排名输出
+
+### `小技巧`  
+
+  * 初始化问题
+  ```cpp
+    int a[5] = {0}; //全部初始化为0
+    int a[5] = {1}; //仅仅a[0]=1, 其余均为0
+  ```  
+  
+  * 建立table存储对应成绩的名称，用下标索引
+  ```cpp
+    char table[4] = {'A','C','M','E'}; //可用 student.best 来索引table
+  ```
+   * 对 vector<自定义结构体> 定义 `sort算法`
+   ```cpp
+    struct Test{
+      int memb1;
+      int memb2;
+    }
+    
+    bool SortByM1(const Test &v1, const Test &v2)
+    {
+        return v1.memb1 < v2.memb1; //升序排列
+    }
+   ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   

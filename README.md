@@ -591,11 +591,25 @@
 ### `思路`      
         
 一个用户要是没有任何有效的通话记录的话，就什么都不输出
-
-
-
-
-
+* 通话时长可以将start和end的时间都转化为minute单位，然后相减计算
+* 录入所有bill后需要按照人名和通话时间进行排序，自定义的比较函数很关键！！
+  ```cpp
+    bool mySort(const Record& r1, const Record& r2)
+    {
+	    if (r1.name != r2.name) //如果两条记录不是一个人的，则按照姓名拼音排列
+    	{
+	    	return r1.name < r2.name; //升序排列
+    	}
+    	else //是同一个人的通话记录
+    	{
+    		int total1 = r1.day * 24 * 60 + r1.hour * 60 + r1.minute;
+    		int total2 = r2.day * 24 * 60 + r2.hour * 60 + r2.minute;
+	    	return total1 < total2;
+	    }
+    }
+  ```
+* 设置一个标识量记录是否上一条是否录入on-line信息，对所有bill进行筛选，删除不具备对应关系的无效信息，复制到新的vector变量中
+* 按要求计算通话时长和费用，输出
 
 ### `小技巧`  
 

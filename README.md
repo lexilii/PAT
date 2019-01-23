@@ -488,6 +488,8 @@
   ```
    * 对 vector<自定义结构体> 定义 `sort算法`
    ```cpp
+   #include <algorithm>
+   
     struct Test{
       int memb1;
       int memb2;

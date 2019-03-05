@@ -22,6 +22,7 @@
 * [1013 Battle Over Cities](#1013)
 * [1015](#1015)
 * [1016 Phone Bills](#1016)
+* [1017 Queueing at Bank](#1017)
 
 ---
 ## 1001
@@ -621,8 +622,11 @@
     char str[MAX_SIZE];
     char str[MAX_LEN+1];
   ```
+  
+  ---
+## 1017 
 
-
+### `思路` 
 
 
 

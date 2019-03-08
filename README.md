@@ -628,9 +628,18 @@
 
 ### `思路` 
 
+设置每个窗口的availableTime，初始值设置为8：00：00，随着处理客户，按照每个客户的处理时长实时更新availableTime.
+* 将所有的时间转化为 `s` 为单位
+* 窗口的availableTime - 客户的arrivalTime = 客户的 waitingTime
+* 如果客户到达之前就已经有窗口空闲，则窗口的 availableTime = 客户的 arrivalTime + processingTime
+* 如果客户到达时还没哟窗口空闲，则窗口的  availableTime += 客户的 processingTime
 
+### `小技巧`
 
+* `注意`
 
+  * 对所有用户按照到达时间先后进行排序
+  * 哪个窗口优先空闲，就取哪个窗口办理业务
 
 
 

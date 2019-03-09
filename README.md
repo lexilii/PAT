@@ -710,8 +710,8 @@
      如此递归下去直到最后一个元素
      
      ```cpp
-     Node* RebuildTree_Pre_In(int preorder[], int inorder[], int inorder_left, int inorder_right, int &pre_index)
-     {
+      Node* RebuildTree_Pre_In(int preorder[], int inorder[], int inorder_left, int inorder_right, int &pre_index)
+      {
            if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
 	 	return NULL;
 	     int key = preorder[pre_index++];
@@ -727,7 +727,7 @@
 	     node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
         
 	     return node;
-     }
+      }
      ```
 
    * 后序遍历+中序遍历重构二叉树
@@ -742,8 +742,8 @@
      `注意`: 我们在后序遍历数组是从根节点到右子树的顺序取值的，所以在递归的时候也要先从右节点开始。 
  
      ```cpp
-      Node* RebuildTree_In_Post(int inorder[], int postorder[], int inorder_left, int inorder_right, int &post_index)
-      {
+       Node* RebuildTree_In_Post(int inorder[], int postorder[], int inorder_left, int inorder_right, int &post_index)
+       {
           if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
 	      return NULL;
 	    int key = postorder[post_index--];
@@ -759,5 +759,5 @@
 	    node->left = RebuildTree_In_Post(inorder, postorder, inorder_left, i-1, post_index);
 
             return node;
-      }
+        }
       ```

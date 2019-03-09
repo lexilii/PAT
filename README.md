@@ -713,20 +713,20 @@
      Node* RebuildTree_Pre_In(int preorder[], int inorder[], int inorder_left, int inorder_right, int &pre_index)
      {
          if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
-             return NULL;
-	 int key = preorder[pre_index++];
-	 Node* node = new Node(key);
+	 	return NULL;
+	   int key = preorder[pre_index++];
+	   Node* node = new Node(key);
 	 
-	 if(inorder_left == inorder_right)
-	     return node;
+	   if(inorder_left == inorder_right)
+	       return node;
 	 
-	 int i;
-	 for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
+	   int i;
+	   for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
 	 
-	 node->left = RebuildTree_Pre_In(preorder, inorder, inorder_left, i-1, pre_index);
-	 node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
+	   node->left = RebuildTree_Pre_In(preorder, inorder, inorder_left, i-1, pre_index);
+	   node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
         
-	 return node;
+	   return node;
      }
      ```
 

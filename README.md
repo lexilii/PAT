@@ -666,12 +666,32 @@
       遍历顺序规则为【根左右】，先遍历根，再遍历左孩子，最后遍历右孩子
  
      ![先序遍历](https://github.com/lexilii/PAT/blob/master/pic/%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86.png)
-   
+     
+     ```cpp
+     template <typename T> //从当前节点出发，沿左分支不断深入，直至没有左分支的节点
+     static void goAlongLeftBranch(BinNodePosi(T) x, Stack<BinNodePosi(T)>& S)
+     {
+        while (x) { S.push(x); x = x->lChild; } //当前节点入栈后随即向左侧分支深入，迭代直到无左孩子
+     }
+
+     template <typename T, typename VST> //元素类型、操作器
+     void travIn_I1(BinNodePosi(T) x, VST& visit)
+     { //二叉树中序遍历算法（迭代版）
+        Stack<BinNodePosi(T)> S; //辅助栈
+        while (true) {
+           goAlongLeftBranch(x, S); //从当前节点出发，逐批入栈
+           if (S.empty()) break; //直至所有节点处理完毕
+           x = S.pop(); visit(x->data); //弹出栈顶节点并访问之
+           x = x->rChild; //转向右子树
+        }
+     }
+
+     ```
    * `中序遍历`
    
       遍历顺序规则为【左根右】
    
    * `后序遍历`
    
-           遍历顺序规则为【左右根】
+      遍历顺序规则为【左右根】
    

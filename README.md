@@ -686,13 +686,13 @@
   对于普通二叉树，可以由 `前序遍历 + 中序遍历` 或者 `后续遍历 + 中序遍历` 重构。（注意：二叉树各节点不能有相同值）
   
   ```cpp
-              1
-           /     \  
-          2       3
-        /   \   /    \
-      4      5 6      7
-            / \        \
-           8   9        10
+                     1
+                  /     \  
+                 2       3
+               /   \   /    \
+             4      5 6      7
+                   / \        \
+                  8   9        10
   
   ```
   前序遍历：1 2 4 5 8 9 3 6 7 10  
@@ -701,12 +701,57 @@
   
   * 前序遍历+中序遍历重构二叉树
   
-    * 前序遍历的顺序是：根->左子树->右子树 
-    * 中序遍历的顺序是：左子树->根->右子树；
+    * 前序遍历的顺序是：根->左子树->右子树   
+    * 中序遍历的顺序是：左子树->根->右子树  
 
-      因此前序遍历的第一个元素1就是整个二叉树的根节点，在中序遍历中找到该元素，则该元素把中序遍历数组分成左右两部分，分别为左子树（4 2 8 5 9）和右子树（6 3 7 10）；  
-      前序遍历的第二个元素2为左子树的根节点，同理在中序遍历中找到该元素，左子树又被一分为二（4）和（8 5 9）； 
-      ......  
-      如此递归下去直到最后一个元素；
+     前序遍历的第一个元素1就是整个二叉树的根节点，在中序遍历中找到该元素，则该元素把中序遍历数组分成左右两部分，分别为左子树（4 2 8 5 9）和右子树（6 3 7 10）；  
+     前序遍历的第二个元素2为左子树的根节点，同理在中序遍历中找到该元素，左子树又被一分为二（4）和（8 5 9）；   
+     ......  
+     如此递归下去直到最后一个元素
+     
+     ```cpp
+     Node* RebuildTree_Pre_In(int preorder[], int inorder[], int inorder_left, int inorder_right, int &pre_index)
+     {
+     	if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
+		return NULL;
+	int key = preorder[pre_index++];
+	Node* node = new Node(key);
+	if(inorder_left == inorder_right)
+		return node;
+	int i;
+	for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
+	node->left = RebuildTree_Pre_In(preorder, inorder, inorder_left, i-1, pre_index);
+	node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
+        
+	return node;
+     }
+     ```
 
-  
+   * 后序遍历+中序遍历重构二叉树
+
+     * 后序遍历的顺序是：左子树->右子树->根  
+     * 中序遍历的顺序是：左子树->根->右子树  
+     
+     后续遍历数组的最后一个元素 1 就是整个数组的根节点，在中序遍历数组中查找到该元素同样把整个数组分成两部分，左子树（4 2 8 5 9）和右子树（6 3 7 10）；    
+     后续遍历数组的倒数第二个元素 3 就是右子树的根节点，同样又把上述右子树分成左右两部分（6）和（7 10）；    
+     ......    
+     如此地递归至最后一个元素。 
+     `注意`: 我们在后序遍历数组是从根节点到右子树的顺序取值的，所以在递归的时候也要先从右节点开始。 
+ 
+     ```cpp
+      Node* RebuildTree_In_Post(int inorder[], int postorder[], int inorder_left, int inorder_right, int &post_index)
+      {
+      	 if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
+	 	return NULL;
+	 int key = postorder[post_index--];
+	 Node* node = new Node(key);
+	 if(inorder_left == inorder_right)
+		return node;
+	 int i;
+	 for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
+	 node->right = RebuildTree_In_Post(inorder, postorder, i+1, inorder_right, post_index);
+	 node->left = RebuildTree_In_Post(inorder, postorder, inorder_left, i-1, post_index);
+
+         return node;
+      }
+      ```

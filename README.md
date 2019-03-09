@@ -714,17 +714,17 @@
       {
            if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
 	 	return NULL;
-	     int key = preorder[pre_index++];
-	     Node* node = new Node(key);
+	       int key = preorder[pre_index++];
+	       Node* node = new Node(key);
 	 
-	     if(inorder_left == inorder_right)
-	         return node;
+	       if(inorder_left == inorder_right)
+	           return node;
+	  
+	       int i;
+	       for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
 	 
-	     int i;
-	     for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
-	 
-	     node->left = RebuildTree_Pre_In(preorder, inorder, inorder_left, i-1, pre_index);
-	     node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
+	       node->left = RebuildTree_Pre_In(preorder, inorder, inorder_left, i-1, pre_index);
+	       node->right = RebuildTree_Pre_In(preorder, inorder, i+1, inorder_right, pre_index);
         
 	     return node;
       }
@@ -742,22 +742,22 @@
      `注意`: 我们在后序遍历数组是从根节点到右子树的顺序取值的，所以在递归的时候也要先从右节点开始。 
  
      ```cpp
-       Node* RebuildTree_In_Post(int inorder[], int postorder[], int inorder_left, int inorder_right, int &post_index)
-       {
+      Node* RebuildTree_In_Post(int inorder[], int postorder[], int inorder_left, int inorder_right, int &post_index)
+      {
           if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
 	      return NULL;
-	    int key = postorder[post_index--];
-	    Node* node = new Node(key);
+	      int key = postorder[post_index--];
+	      Node* node = new Node(key);
 	  
-	    if(inorder_left == inorder_right)
-	        return node;
+	      if(inorder_left == inorder_right)
+	          return node;
 	  
-	    int i;
-	    for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
+	      int i;
+	      for(i = inorder_left; inorder[i] != key; ++i)；//找到的i为根节点在中序遍历中的索引
 	 
-	    node->right = RebuildTree_In_Post(inorder, postorder, i+1, inorder_right, post_index);
-	    node->left = RebuildTree_In_Post(inorder, postorder, inorder_left, i-1, post_index);
+	      node->right = RebuildTree_In_Post(inorder, postorder, i+1, inorder_right, post_index);
+	      node->left = RebuildTree_In_Post(inorder, postorder, inorder_left, i-1, post_index);
 
-            return node;
-        }
+          return node;
+       }
       ```

@@ -659,11 +659,19 @@
    
    二叉树本身不具有天然的全局次序，为实现遍历，需通过在各节点与其孩子之间约定某种局部次序，间接地定义某种全局次序。
    按惯例，左兄弟优先于右兄弟,若记作节点`v`,及其左右孩子`L`和`R`，则局部访问的次序可有`V L R`、`L V R`、`L R V`三种选择，根据节点`V`在其中的访问次序，三种策略相应称为 先序遍历（preorder）、中序遍历（inorder) 和 后序遍历(postorder)。
-                      ![举例](https://github.com/lexilii/PAT/blob/master/pic/%E4%BA%8C%E5%8F%89%E6%A0%91.PNG)
+                   
+		   ![举例](https://github.com/lexilii/PAT/blob/master/pic/%E4%BA%8C%E5%8F%89%E6%A0%91.PNG)
    * `先序遍历`
+      
       遍历顺序规则为【根左右】，先遍历根，再遍历左孩子，最后遍历右孩子
-   ![先序遍历](https://github.com/lexilii/PAT/blob/master/pic/%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86.png)
+ 
+ ![先序遍历](https://github.com/lexilii/PAT/blob/master/pic/%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86.png)
    
-   * `中序遍历`：遍历顺序规则为【左根右】
-   * `后序遍历`：遍历顺序规则为【左右根】
+   * `中序遍历`
+   
+   遍历顺序规则为【左根右】
+   
+   * `后序遍历`
+   
+   遍历顺序规则为【左右根】
    

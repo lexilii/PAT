@@ -712,7 +712,7 @@
      ```cpp
      Node* RebuildTree_Pre_In(int preorder[], int inorder[], int inorder_left, int inorder_right, int &pre_index)
      {
-     	     if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
+             if(inorder_left > inorder_right) //如果开始位置大于结束位置，说明已经处理到叶节点了
 	 	 return NULL;
 	     int key = preorder[pre_index++];
 	     Node* node = new Node(key);

@@ -102,3 +102,50 @@ int main()
 
 
 //第二种方案
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+struct node {
+	int index, value;
+};
+bool cmp(node a, node b) {
+	return a.index < b.index;
+}
+vector<int> post, in;
+vector<node> ans;
+
+// 将后序和中序转化为前序，只不过增加一个变量index，表示当前根节点在二叉树中所对应的下标（从0开始）
+void pre(int root, int start, int end, int index) 
+{
+	if (start > end) return;
+	int i = start;
+	//寻找根节点在前序排列中的位置，从而划分左右子树
+	while (i < end && in[i] != post[root]) i++;
+
+	ans.push_back({ index, post[root] });
+
+	pre(root - 1 - end + i, start, i - 1, 2 * index + 1);
+	pre(root - 1, i + 1, end, 2 * index + 2);
+}
+int main() {
+	int n;
+	scanf("%d", &n);
+	post.resize(n);
+	in.resize(n);
+	for (int i = 0; i < n; i++) scanf("%d", &post[i]);
+	for (int i = 0; i < n; i++) scanf("%d", &in[i]);
+
+	pre(n - 1, 0, n - 1, 0);
+	// 按照index索引对ans进行排序，输出结果就是层序遍历的顺序
+	sort(ans.begin(), ans.end(), cmp);
+
+	for (int i = 0; i < ans.size(); i++) {
+		if (i != 0) cout << " ";
+		cout << ans[i].value;
+	}
+	return 0;
+}

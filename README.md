@@ -93,7 +93,7 @@
     
       //构造函数
       Polynomials( int e=0, double c=0):exponents(e),coefficients(c) {}  
-     }
+    }
      ```
   * `建立循环`  
   
@@ -806,18 +806,18 @@
        int pre[1000];
        int find(int x)  // 查找 x 的根节点
        {
-           int r = x;
+         int r = x;
 	   while(pre[r] != r)  // 返回根节点r  如果上一级是他本身，则他就是根节点
 	     	r = pre[r];
 	   int i = x;
 	   int j;
-	   while(i != r)  // 路径压缩
-	   {
-	        j = pre[i];  // 在改变上级之前用临时变量 j 记录下他的值
-	   	pre[i] = r;  // 把上级改为根节点
-	   	i = j;
-	   }
-	   return r;
+	     while(i != r)  // 路径压缩
+	     {
+	       j = pre[i];  // 在改变上级之前用临时变量 j 记录下他的值
+	       pre[i] = r;  // 把上级改为根节点
+	       i = j;
+	     }
+	     return r;
        }
        
        void join(int x, int y) // 让两个节点所在连通分支合并为一个

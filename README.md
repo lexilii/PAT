@@ -880,20 +880,108 @@
           }
         ```
 	* `cin.get()`
-		* 用法1：cin.get()（字符变量名）可以用来接收字符
+		* 用法1：cin.get(字符变量名) 可以用来接收字符
+	
+		```cpp
+		  #include<iostream>
+		  using namespace std;
+		  void main()
+		  {
+	 	    //输入：jljlk
+	  	    //输出：j
+	  	    char ch;
+	  	    ch  = cin.get(); //或者 cin.get(ch);
+	  	    cout <<ch << endl;
+	 	 }
+		```
+		* 用法2：cin.get(字符数组名，接收字符数目）用来接收一行字符串，可以接收空格
+		
+		```cpp
+		  #include<iostream>
+		  using namespace std;
+		  void main()
+		  {
+	 	    //输入：jkl jkl jkl
+	  	    //输出：jkl jkl jkl
+		    
+		    //输入: abcdeabcdeabcdeabcdeabcde(25个字符)
+		    //输出：abcdeabcdeabcdeabcd (接收19个字符+1个'/0'）
+	  	    char a[20];
+	  	    cin.get(a,20);
+	  	    cout <<a << endl;
+	 	 } 
+		```
+	
+	* `cin.getline()`  
+	 
+	 	* 此函数一次读取多个字符（包括空白字符），直到读满 N-1 个，或遇到指定的结束符位置（默认以'\n'结束）
+	 	* 语法为：`cin.getline(字符指针(char*), 字符个数N(int), 结束符(char));`	  
+		* `注意`：cin.getline()函数缺省的第三个参数为'\n'	
+		* 当用在多维数组中的时候，也可以用`cin.getline(m[i],20)` 之类的用法
 	```cpp
-	 #include<iostream>
-	 using namespace std;
-	 void main()
-	 {
+	    #include<iostream>
+	    using namespace std;
 	
-	 }
-	```
-
-	
-	* `cin.getline()`
+	    int main()
+	    {
+	       //输入：jkljkljkl
+	       //输出：jklj 
+	       char m[20];
+	       cin.getline(m,5); //接受5个字符到m中，最后一个为'/0'，所以只看到4个字符输出
+	       cout<< m<< endl;
+	    }
+	  ```
+	  
+	  
+	  
 	* `getline()`
+	  	
+		* 需要包含 `#include<string>`  
+	  	* 和cin.getline()类似，但是cin.getline()属于istream流，而getline()属于string流，是不一样的函数
+		* getline()接受的字符串长度不受限制,回车结束读取
+	  
+	```cpp
+	   #include<iostream>
+	   #include<string>
+	   using namespace std;
+	
+	   void main()
+	   {
+	      //输入：jkljkljkl
+	      //输出：jkljkiljkl
+	      
+	      //输入：jkl jfkdld jklsfl
+	      //输出：jkl jfkdld jklsfl
+	      string str;
+	      getline(cin,str);
+	      cout<< str<< endl;
+	   }
+	
+	```
 	* `gets()`
+	  
+		* C 中的函数，可以无限读取，不会判断上限，以回车结束读取，所以程序员应保证buffer空间足够大，以便执行操作时不会发生溢出
+		 * 与 cin.getline() 功能类似，但是不能自定义结束符，只能换行符结束
+		* 需包含`#include<stdio.h>`  
+		* gets()同样可以用在多维数组里面：`gets(m[i])`
+	```cpp
+	   #include<stdio.h>
+	   #include<iostream>
+	   using namespace std;
+	
+	   void main()
+	   {
+	      //输入：jkljkljkl
+	      //输出：jkljkiljkl
+	      
+	      //输入：jkl jkl jkl
+	      //输出：jkl jkl jkl
+	      char m[20];
+	      gets(m);      // 不能写成m=gets();
+	      cout<< m<< endl;
+	   }
+	```
+	   
   
   
   

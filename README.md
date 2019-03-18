@@ -849,13 +849,13 @@
 
   * 关于 string 的读入
   
-   * cin 在读到空格时就停止读取，所以输入 `asdf fghj`，输出 `asdf`
+        * cin 在读到空格时就停止读取，所以输入 `asdf fghj`，输出 `asdf`
   ```cpp
    string s;
    cin >> s;
    cout << a << endl;
   ```
-   * 若要保留空格，则需要用到 `getline`,此时在enter前的空格都能读到
+     * 若要保留空格，则需要用到 `getline`,此时在enter前的空格都能读到
    ```cpp
     string s;
     getline(cin,s);

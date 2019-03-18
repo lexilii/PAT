@@ -863,7 +863,7 @@
         ```
 	
   * C++ 中 cin、 cin.get()、cin.getline()、getline()、gets()等函数的用法
-  	* cin>>  
+  	* `cin>>`  
        	  接受一个字符串，遇到`空格`、`TAB`、`回车`都结束  
      
         ```cpp
@@ -879,11 +879,21 @@
              cout << a << endl;
           }
         ```
-	* cin.get()
-		* 用法1： 
-	* cin.getline()
-	* getline()
-	* gets()
+	* `cin.get()`
+		* 用法1：cin.get()（字符变量名）可以用来接收字符
+	```cpp
+	 #include<iostream>
+	 using namespace std;
+	 void main()
+	 {
+	
+	 }
+	```
+
+	
+	* `cin.getline()`
+	* `getline()`
+	* `gets()`
   
   
   

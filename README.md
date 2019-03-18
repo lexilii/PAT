@@ -864,9 +864,9 @@
 	
   * C++ 中 cin、 cin.get()、cin.getline()、getline()、gets()等函数的用法
   	* cin>>  
-       	  接受一个字符串，遇到`空格`、`TAB`、`回车`都结束
+       	  接受一个字符串，遇到`空格`、`TAB`、`回车`都结束  
      
-          ```cpp
+        ```cpp
              #include<iostream> 
              using namespace std;
       
@@ -879,7 +879,7 @@
                 cin >> a;
                 cout << a << endl;
               }
-           ```
+        ```
 	* cin.get()
 		* 用法1： 
 	* cin.getline()

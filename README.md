@@ -847,8 +847,8 @@
   
 ### `小技巧`
 
-  * 关于 string 的读入
-  	* cin 在读到空格时就停止读取，所以输入 `asdf fghj`，输出 `asdf`
+  >关于 string 的读入
+  >>cin 在读到空格时就停止读取，所以输入 `asdf fghj`，输出 `asdf`
       
         ```cpp
          string s;

@@ -874,8 +874,7 @@
           {
              //输入: jkljkl jkljkl 
              //输出：jkljkl
-             
-	     char a[20];
+             char a[20];
              cin >> a;
              cout << a << endl;
           }

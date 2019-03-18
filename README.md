@@ -867,18 +867,18 @@
        	  接受一个字符串，遇到`空格`、`TAB`、`回车`都结束  
      
         ```cpp
-             #include<iostream> 
-             using namespace std;
+          #include<iostream> 
+          using namespace std;
       
-             void main()
-             {
-                //输入: jkljkl jkljkl 
-                //输出：jkljkl
-                
-		char a[20];
-                cin >> a;
-                cout << a << endl;
-              }
+          void main()
+          {
+             //输入: jkljkl jkljkl 
+             //输出：jkljkl
+             
+	     char a[20];
+             cin >> a;
+             cout << a << endl;
+          }
         ```
 	* cin.get()
 		* 用法1： 

@@ -26,6 +26,7 @@
 * [1019 General Palindromic Number](#1019)
 * [1020 Tree Traversals](#1020)
 * [1021 Deepest Root](#1021)
+* [1022 Digital Library](#1022)
 ---
 ## 1001
 
@@ -837,9 +838,29 @@
 
 
 
+     ---
+## 1022
 
+### `思路` 
 
+  
+  
+### `小技巧`
 
+  * 关于 string 的读入
+  
+   * cin 在读到空格时就停止读取，所以输入 `asdf fghj`，输出 `asdf`
+  ```cpp
+   string s;
+   cin >> s;
+   cout << a << endl;
+  ```
+   * 若要保留空格，则需要用到 `getline`,此时在enter前的空格都能读到
+   ```cpp
+    string s;
+    getline(cin,s);
+   ```
+     
 
 
 

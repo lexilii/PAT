@@ -1041,8 +1041,8 @@
  * 记录相同成绩的count变量应该在计算完排名再清除
  
  ```cpp
- 	for (int i = 0; i < totalTestee.size(); i++)
-	{
+    for (int i = 0; i < totalTestee.size(); i++)
+    {
 		if (totalTestee[i].score != lastScore) // 和上一个人成绩不同
 		{
 			rank = rank + count + 1;
@@ -1056,7 +1056,7 @@
 			count++;
 			totalTestee[i].final_rank = rank;
 		}
-        }
+    }
  ```
   
   

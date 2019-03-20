@@ -28,6 +28,7 @@
 * [1021 Deepest Root](#1021)
 * [1022 Digital Library](#1022)
 * [1023 Have Fun with Numbers](#1023)
+* [1025  PAT Ranking](#1025)
 ---
 ## 1001
 
@@ -1030,7 +1031,33 @@
  * 注意最高位如果有进位也要保留！！！ 开始没有AC就是把最高位进位的情况忽略了。
   
   
+       ---
+## 1025
   
+### `思路` 
+  
+ 题目比较简单，主要考察自己定义 vector<结构体> 的排序函数，但是犯了两个低级错误：
+ * 成绩排序应该是从大到小的降序排列，不是升序
+ * 记录相同成绩的count变量应该在计算完排名再清除
+ 
+ ```cpp
+ 	for (int i = 0; i < totalTestee.size(); i++)
+	{
+		if (totalTestee[i].score != lastScore) // 和上一个人成绩不同
+		{
+			rank = rank + count + 1;
+			totalTestee[i].final_rank = rank;
+			lastScore = totalTestee[i].score;
+
+			count = 0; //累计数清零
+		}
+		else // 和上一个人成绩相同
+		{
+			count++;
+			totalTestee[i].final_rank = rank;
+		}
+        }
+ ```
   
   
   

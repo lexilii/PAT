@@ -30,6 +30,12 @@
 * [1023 Have Fun with Numbers](#1023)
 * [1025  PAT Ranking](#1025)
 * [1027 Colors in Mars](#1027)
+* [1028 List Sorting](#1028)
+
+
+
+
+
 ---
 ## 1001
 
@@ -1068,9 +1074,37 @@
   题目很简单，就是进制转换。
   
   
+           ---
+## 1028
   
+### `思路` 
   
-     
+  题目很简单，考察自定义的vector排序函数。
+  
+  `注意:` 采用 cin cout 输入输出数据会有一个测试点不通过，改为 scanf printf 即可AC
+  
+### `小技巧`  
 
+* 输入输出
 
+  s运行时间上 cin > scanf , cout > printf ，所以数据量比较大的时候，尽量采用 scanf 和 printf
+  
+* scanf 获取 string
+    
+  ```cpp
+     string s;
+     char c[10];
+     scanf("%s",c);
+     s = c;
+  ```
+  
+* printf 输出 string
+
+  printf 输出字符串是针对 `char*` 的，printf 只能输出C语言中的内置数据，string不是C语言内置数据。  
+  s这个string类型的对象并非只有字符串，其中还有许多用于操作的函数，于是&s并非字符串的首地址，而是s这个对象的首地址。
+  
+  ```cpp
+     string s;
+     printf("%s",s.c_str()); // string 中c_string() 成员方法返回当前字符串的首字符地址
+  ```
 

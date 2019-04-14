@@ -1218,7 +1218,14 @@
   
   
   
+---
+## 1042
   
+### `思路(mine)`  
+
+* 将cards存为table1
+* 每次置换存放到新的table2中
+* 结束一次shuffling，就将暂存的table2内容对table1的内容进行刷新
   
   
   

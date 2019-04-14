@@ -8,11 +8,12 @@
 ---
 
 # Table Of Contents
-## 简单模拟
+### 简单模拟
     简单按题目说的作，考察代码能力
     
 * [1042 Shuffling Machine](#1042)    
 
+###
 * [1001 A+B Format](#1001)
 * [1002 A+B for Polynomials](#1002)
 * [1003 Emergency](#1003)
@@ -1221,11 +1222,17 @@
 ---
 ## 1042
   
-### `思路(mine)`  
+### `思路`  
 
-* 将cards存为table1
-* 每次置换存放到新的table2中
-* 结束一次shuffling，就将暂存的table2内容对table1的内容进行刷新
+ * `mine`
+	* 将cards存为table1
+	* 每次置换存放到新的table2中
+	* 结束一次shuffling，就将暂存的table2内容对table1的内容进行刷新
+	
+* `参考`
+	 * 不是直接存储'S1'等来表示牌的花色，而是用数字对应相应的花色
+	 * 对数字表示的花色进行 shuffling ，最后将数字按照13个为一轮转化为相应的花色输出
+	
   
   
   

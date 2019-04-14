@@ -8,6 +8,10 @@
 ---
 
 # Table Of Contents
+## 简单模拟
+    简单按题目说的作，考察代码能力
+    
+* [1042 Shuffling Machine](#1042)    
 
 * [1001 A+B Format](#1001)
 * [1002 A+B for Polynomials](#1002)

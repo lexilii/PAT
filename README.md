@@ -8,22 +8,43 @@
 ---
 
 # Table Of Contents
+
 ### 简单模拟
+    
     简单按题目说的作，考察代码能力
     
 * [1042 Shuffling Machine](#1042)    
 * [1046 Shortest Distance ](#1046)  
 * [1065 A+B and C ](#1065)  
-###
-* [1001 A+B Format](#1001)
 * [1002 A+B for Polynomials](#1002)
+* [1009 Product of Polynomials](#1009)
+
+
+### 查找元素
+  
+    给定一些元素，然后查找某个满足条件的元素。
+   	
+	* 如果需要在一个比较小范围的数据集里进行查找，那么直接遍历即可
+   	* 如果需要查找的范围较大，那么可以用 `二分查找` 等算法来进行更快速的查找
+    
+* [1011 World Cup Betting](#1011)    
+* [1006 Sign In and Sign Out](#1006)    
+* [1036 Boys vs Girls](#1036) 
+
+
+
+
+
+
+* [1001 A+B Format](#1001)
+
 * [1003 Emergency](#1003)
 * [1005 Spell It Right](#1005)
-* [1006 Sign In and Sign Out](#1006)
+
 * [1007 Maximum Subsequence Sum](#1007)
 * [1008 ](#1008)
-* [1009 Product of Polynomials](#1009)
-* [1011 ](#1011)
+
+
 * [1012 The Best Rank](#1012)
 * [1013 Battle Over Cities](#1013)
 * [1015](#1015)
@@ -40,7 +61,7 @@
 * [1031 Hello World for U](#1031)
 * [1032 Sharing](#1032)
 * [1035 Password](#1035)
-* [1036 Boys vs Girls](#1036)
+
 * [1037 Magic Coupon](#1037)
 
 

@@ -43,33 +43,42 @@
 	 
 * [1031 Hello World for U](#1031)
 
+### 日期处理
+  
+    比如日期差值（求两个日期之间的天数）
+    	 * 思路：不妨假设第一个日期早于第二个日期，令第一个日期不断加`1天`，直到第一个日期等于第二个日期为止即可得出答案
+	 
+### 进制转换
+  
+    对一个 P 进制数，转换为 Q 进制，需要分为两步：
+    	
+	* 将 P 进制数 x 转换为 十 进制数 y
+	 * 将 十 进制数 y 转换为 Q 进制数 z
+
+* [1019 General Palindromic Number](#1019)
+* [1027 Colors in Mars](#1027)
+* [1058  A+B in Hogwarts](#1058)
+
+
 
 * [1001 A+B Format](#1001)
-
 * [1003 Emergency](#1003)
 * [1005 Spell It Right](#1005)
-
 * [1007 Maximum Subsequence Sum](#1007)
 * [1008 ](#1008)
-
-
 * [1012 The Best Rank](#1012)
 * [1013 Battle Over Cities](#1013)
 * [1015](#1015)
 * [1016 Phone Bills](#1016)
 * [1017 Queueing at Bank](#1017)
-* [1019 General Palindromic Number](#1019)
 * [1020 Tree Traversals](#1020)
 * [1021 Deepest Root](#1021)
 * [1022 Digital Library](#1022)
 * [1023 Have Fun with Numbers](#1023)
 * [1025  PAT Ranking](#1025)
-* [1027 Colors in Mars](#1027)
 * [1028 List Sorting](#1028)
-
 * [1032 Sharing](#1032)
 * [1035 Password](#1035)
-
 * [1037 Magic Coupon](#1037)
 
 
@@ -1286,6 +1295,14 @@
 ### `小技巧`
 
     可以读一组，输出一组结果！！！
+  
+  
+---
+## 1058
+  
+### `思路`   
+  
+  
   
   
   

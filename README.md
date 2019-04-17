@@ -67,12 +67,16 @@
 
 * [1061 Dating](#1061)
 * [1073 Scientific Notation](#1073)
-
-
-
 * [1001 A+B Format](#1001)
-* [1003 Emergency](#1003)
 * [1005 Spell It Right](#1005)
+* [1035 Password](#1035)
+* [1077 Kuchiguse](#1077)
+
+
+
+
+* [1003 Emergency](#1003)
+
 * [1007 Maximum Subsequence Sum](#1007)
 * [1008 ](#1008)
 * [1012 The Best Rank](#1012)
@@ -87,7 +91,7 @@
 * [1025  PAT Ranking](#1025)
 * [1028 List Sorting](#1028)
 * [1032 Sharing](#1032)
-* [1035 Password](#1035)
+
 * [1037 Magic Coupon](#1037)
 
 
@@ -1355,6 +1359,10 @@
 
 
 
+---
+## 1077
+  
+### `思路`
 
 
 

@@ -1378,13 +1378,13 @@
    * 读入n之后要用getchar接收后面的换行符，否则会使循环内的getline读取这个换行符，导致第一个字符串读取错误
    * string 没有反转函数，需要自己编写
    
-   ```cpp
-     // 反转字符串 string str
-     int len = str.length();
-     for(int i = 0; i < len/2; i++)
-     {
-     	char temp = str[i];
-	str[i] = str[len-i-1];
-	str[len-i-1] = temp;
-     }
-   ```
+```cpp
+	// 反转字符串 string str
+	int len = str.length();
+	for(int i = 0; i < len/2; i++)
+	{
+		char temp = str[i];
+		str[i] = str[len-i-1];
+		str[len-i-1] = temp;
+	}
+ ```

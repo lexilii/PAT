@@ -73,25 +73,33 @@
 * [1077 Kuchiguse](#1077)
 * [1082 Read Number in Chinese](#1082)
 
+
+## 算法初步
+
+### 排序
+
+	 排序是基础算法之一，属于常见题型（冒泡排序、选择排序、插入排序）
+	 
+	 由于考试中的排序题大部分只需要得到排序的最终结果，而不需要写完整的过程，推荐直接使用 C++ 中的 sort函数 进行排序
+
+* [1012 The Best Rank](#1012)
+* [1016 Phone Bills](#1016)
+* [1025  PAT Ranking](#1025)
+* [1028 List Sorting](#1028)
+* [1055 The World's Richest ](#1055)
 ---
 
 * [1003 Emergency](#1003)
-
 * [1007 Maximum Subsequence Sum](#1007)
 * [1008 ](#1008)
-* [1012 The Best Rank](#1012)
 * [1013 Battle Over Cities](#1013)
 * [1015](#1015)
-* [1016 Phone Bills](#1016)
 * [1017 Queueing at Bank](#1017)
 * [1020 Tree Traversals](#1020)
 * [1021 Deepest Root](#1021)
 * [1022 Digital Library](#1022)
 * [1023 Have Fun with Numbers](#1023)
-* [1025  PAT Ranking](#1025)
-* [1028 List Sorting](#1028)
 * [1032 Sharing](#1032)
-
 * [1037 Magic Coupon](#1037)
 
 
@@ -1308,6 +1316,15 @@
 ### `小技巧`
 
   可以读一组，输出一组结果！！！
+  
+  
+  
+---
+## 1055
+  
+### `思路`   
+  
+  
   
   
 ---

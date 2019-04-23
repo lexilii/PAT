@@ -90,6 +90,7 @@
 * [1075 PAT Judge](#1075)
 * [1083 List Grades](#1083)
 * [1080 Graduate Admission](#1080)
+* [1095 Cars on Campus](#1095)
 ---
 
 * [1003 Emergency](#1003)
@@ -1424,3 +1425,43 @@
 * 如果万节所有位都是0，那么要注意不能输出多余的万
 
 
+---
+## 1095
+    
+### `注意`
+
+* 时间以 s 为单位可以简化操作
+* 查询的时刻是按照从小到大排序的，如果对每个查询都从头到尾遍历，会运行超时
+* 采用 map 数据结构存储 每辆车的停留时间，map具有按照key值从小到大自动排序的特性
+
+### `小技巧`
+
+* `查询当前车辆数`
+
+	* 将 valid 数组按照时间从小到大排序，考虑到查询的时刻是按照时间顺序 `递增的`, 可以设置一个变量 now ，作为下标用以指向 valid 数组中的记录，使得 now 指向的记录的时刻不超过本次欲查询的时刻
+	* 设置变量 numCar，记录当前校园里的车辆数
+		 * 当 valid[now[] == "in" , numCar+1
+		 * 当 valid[now[] == "out" , numCar-1
+
+```cpp
+	int numCar = 0;
+	int now = 0; // 处理至当前查询时间
+	for (int i = 0; i < k; i++)
+	{
+		int h, m, s;
+		scanf("%d:%d:%d", &h, &m, &s);
+		int qTime = h * 60 * 60 + m * 60 + s;
+
+		while (now < valid.size() && valid[now].time <= qTime)
+		{
+			if (valid[now].status == "in")
+				numCar++; // 车辆进入
+			else
+				numCar--; // 车辆离开
+			now++;
+		}
+
+		printf("%d\n", numCar);
+	}
+
+```

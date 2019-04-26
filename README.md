@@ -103,6 +103,8 @@
 
 
 * [1084 Broken Keyboard](#1084)
+* [1092 To Buy or Not to Buy](#1092)
+
 ---
 
 * [1003 Emergency](#1003)

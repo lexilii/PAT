@@ -132,6 +132,7 @@
 * [1033 To Fill or Not to Fill](#1033)
 * [1037 Magic Coupon](#1037)
 * [1067 Sort with Swap(0, i)](#1067)
+* [1038 Recover the Smallest Number](#1038)
 ---
 
 * [1003 Emergency](#1003)
@@ -1318,7 +1319,16 @@
   	* 应该是尽量挑选大数相乘，这样才能获得最优结果。
   
   
-    
+---
+## 1038
+  
+### `思路`    
+   
+   * 对字符串 str1 和 str2，如果 `str1+str2 < str2+str1` ，则将 str1 排在前面
+   * 结果为零的时候，要输出0
+   
+   
+   
 ---
 ## 1041
   

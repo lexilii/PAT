@@ -1,3 +1,5 @@
+// ============================ 二分法 =================================
+
 #include <cstdio>
 #include <vector>
 #include <string>
@@ -55,3 +57,47 @@ int binaruSearch(int i,int n, long long x)
 
 	return left; // while 结束时 left == right，返回任意一个均可
 }
+
+
+// ============================== two pointers ===================================
+
+#include<cstdio>
+#include<algorithm>
+
+using namespace std;
+
+int a[100010];
+
+int main()
+{
+	int n, p;
+	scanf("%d %d", &n, &p);
+
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+
+	// 从小到大排序
+	sort(a, a + n);
+
+	// two pointers
+	int i = 0;
+	int j = 0;
+	int maxLen = 0;
+	long long res;
+	while (i < n && j < n)
+	{
+		res =(long long) a[i] * p;
+		while (a[j] <= res && j < n)
+			j++;
+		maxLen = (j - i) > maxLen ? (j - i): maxLen;
+		i++;
+	}
+
+	printf("%d", maxLen);
+
+	return 0;
+}
+
+

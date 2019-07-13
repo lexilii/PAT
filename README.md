@@ -173,14 +173,27 @@
 
 * [1069 The Black Hole of Numbers](#1069)
 * [1104 Sum of Number Segments](#1104)
+* [1008 Elevator](#1008)
 
+### 分数的四则运算
 
-
+ ```cpp
+  struct Fraction  // 分数
+  {
+  	int up;    // 分子 
+  	int down;  // 分母（非负）
+  }
+ 
+ ```
+	 由于分数的乘法和除法过程中可能使分子或分母超过 int 型表示范围，因此一般情况下，分子分母应当使用 long long 型来存储。
+	 
+* [1081 Rational Sum](#1081)
+* [1088 Rational Arithmetic](#1088)
 ---
 
 * [1003 Emergency](#1003)
 * [1007 Maximum Subsequence Sum](#1007)
-* [1008 ](#1008)
+
 * [1013 Battle Over Cities](#1013)
 * [1015](#1015)
 * [1017 Queueing at Bank](#1017)
@@ -580,6 +593,16 @@
       
    * 联机算法！！
       
+      
+---
+## 1008 
+
+### `思路` 
+
+* 可能会出现目的楼to就是当前层now的情况，这时候也需要停留5s
+
+
+
 ---
 ## 1009 
 
